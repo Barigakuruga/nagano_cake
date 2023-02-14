@@ -1,2 +1,38 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<main>
+  <h2>商品編集</h2>
+  <div>
+    <%= form_with model: @item, url: admin_item_path(@item.id) do |f| %>
+    <div>
+      <%= f.label:商品画像 %>
+      <%= f.file_field :image %>
+    </div>
+    <div>
+      <%= f.label:商品名 %>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <%= f.label:商品説明 %>
+      <%= f.text_area :introduction %>
+    </div>
+    <div>
+      ジャンル
+    </div>
+    <div>
+      <%= f.label:税抜価格 %>
+      <%= f.text_field :price %>円
+    </div>
+    <div class="field">
+      <%= f.label:販売ステータス %>
+      <div>
+        <%= f.label:販売中 %>
+        <%= f.radio_button :is_active, :true %>
+        <%= f.label:販売中止 %>
+        <%= f.radio_button :is_active, :false %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit "変更を保存" %>
+    </div>
+    <% end %>
+  </div>
+</main>

@@ -1,0 +1,32 @@
+<div>
+  <h2>会員一覧</h2>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>会員id</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= customer.first_name %><%= customer.last_name %></td>
+          <td><%= customer.email %></td>
+          <td>
+            <% if customer.is_deleted %>
+            無効
+            <% else %>
+            有効
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%= paginate @customers %>
