@@ -1,21 +1,38 @@
-<h2>商品詳細</h2>
-
-<%= image_tag @item.get_image(200,200) %>
-
-<p>商品名 <%= @item.name %></p>
-<p>商品詳細 <%= @item.introduction %></p>
-<p>ジャンル <%= @item.genre.name %></p>
-<p>税込価格<br>
-   (税抜価格)<%= @item.price %>円
-</p>
-<p>販売ステータス</p>
-<% if @item.is_active %>
-  販売中
-<% else %>
-  販売中止
-<% end %>
-
-
-<%= link_to edit_admin_item_path do %>
-<button class="btn btn-secondary btn-lg" >編集する</button>
-<% end %>
+<div class="row mt-4">
+  <h4 class="bg-light col-md-2 offset-md-2">商品詳細</h4>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-3 m-5">
+      <%= image_tag @item.get_image(400,200) %>
+    </div>
+    <div class="col-md-7 mt-5">
+      <div class="row p-2">
+        <div class="col-md-3">商品名</div><%= @item.name %>
+      </div>
+      <div class="row p-2">
+        <div class="col-md-3">商品詳細</div><%= @item.introduction %>
+      </div>
+      <div class="row p-2">
+        <div class="col-md-3">ジャンル</div><%= @item.genre.name %>
+      </div>
+      <div class="row p-2">
+        <div class="col-md-3">税込価格<br>
+        (税抜価格)</div><%= @item.with_tax_price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %>(<%= @item.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %>)円
+      </div>
+      <div class="row p-2">
+        <div class="col-md-3">販売ステータス </div>
+        <% if @item.is_active %>
+          <div class="text-success pl-2 ">販売中</div>
+        <% else %>
+          <div class="text-secondary pl-2 ">販売中止</div>
+        <% end %>
+      </div>
+      <div class="row">
+        <%= link_to edit_admin_item_path, class: "mt-4 col-md-3 offset-md-2" do %>
+          <div class="btn btn-success btn-lg " >編集する</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

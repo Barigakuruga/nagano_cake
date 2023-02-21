@@ -1,7 +1,7 @@
 <div>
   <h2>会員一覧</h2>
-  <div>
-    <table>
+  <div class="container">
+    <table class="table col">
       <thead>
         <tr>
           <th>会員id</th>
@@ -18,9 +18,9 @@
           <td><%= customer.email %></td>
           <td>
             <% if customer.is_deleted %>
-            無効
+            <div class="text-secondary">無効</div>
             <% else %>
-            有効
+            <div class="text-success">有効</div>
             <% end %>
           </td>
         </tr>

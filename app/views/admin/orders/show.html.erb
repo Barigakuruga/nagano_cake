@@ -1,0 +1,47 @@
+<div>
+  <h3>注文履歴詳細</h3>
+  <table>
+    <tr>
+      <td>購入者</td>
+      <td><%= @order.customer.first_name %><%= @order.customer.last_name %></td>
+    </tr>
+    <tr>
+      <td>注文日</td>
+      <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+      <td><%= @order.address %></td>
+    </tr>
+    <tr>
+      <td>支払方法</td>
+      <td><%= @order.payment_method_i18n %></td>
+    </tr>
+    <tr>
+      <td>注文ステータス</td>
+      <%= form_with model: @status, url: admin_order_path(@status.id) do |f| %>
+      <td><%= f.select :status, Order.statuses.keys.map { |k| [t("enum.order.status.#{k}"), k] } %></td>
+      <td><%= f.submit "更新" %></td>
+      <% end %>
+    </tr>
+  </table>
+  <table>
+    <thead>
+      <tr>商品名</tr>
+      <tr>単価(税込)</tr>
+      <tr>数量</tr>
+      <tr>小計</tr>
+      <tr>製作ステータス</tr>
+    </thead>
+    <tbody>
+      <% @order_details.each do |order_detail| %>
+      <tr>
+        <td><%= order_detail.item.name %></td>
+        <td><%= order_detail.price %></td>
+        <td><%= order_detail.amount %></td>
+        <td><%= order_detail.making_status_i18n %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
