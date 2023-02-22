@@ -1,10 +1,13 @@
-<div>
-  <h2>会員一覧</h2>
+
+
   <div class="container">
-    <table class="table col">
-      <thead>
+    <div class="row">
+      <h4 class="bg-light m-3 text-center col-md-2">会員一覧</h4>
+    </div>
+    <table class="table col-md-10 text-center m-auto">
+      <thead class="table-secondary">
         <tr>
-          <th>会員id</th>
+          <th>会員ID</th>
           <th>氏名</th>
           <th>メールアドレス</th>
           <th>ステータス</th>
@@ -28,5 +31,4 @@
       </tbody>
     </table>
   </div>
-</div>
 <%= paginate @customers %>

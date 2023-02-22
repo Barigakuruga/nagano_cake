@@ -20,7 +20,7 @@
     <tr>
       <td>注文ステータス</td>
       <%= form_with model: @status, url: admin_order_path(@status.id) do |f| %>
-      <td><%= f.select :status, Order.statuses.keys.map { |k| [t("enum.order.status.#{k}"), k] } %></td>
+      <td><%= f.select :status, Order.statuses.keys.map { |k| [I18n.t("enums.order.status.#{k}"), k] } %></td>
       <td><%= f.submit "更新" %></td>
       <% end %>
     </tr>
@@ -39,7 +39,11 @@
         <td><%= order_detail.item.name %></td>
         <td><%= order_detail.price %></td>
         <td><%= order_detail.amount %></td>
+        <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
         <td><%= order_detail.making_status_i18n %></td>
+        <td><%= f.select :making_status, OrderDetail.making_statuses.keys.map { |k| [I18n.t("enums.order_detail.making_status.#{k}"), k] } %></td>
+        <td><%= f.submit "更新" %></td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>

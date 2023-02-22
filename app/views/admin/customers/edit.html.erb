@@ -1,69 +1,58 @@
-<div>
-
-    <strong>
-      <%= @customer.first_name %><%= @customer.last_name %>
-    </strong>
-    さんの
-    <strong>
-      会員情報編集
-    </strong>
-
-  <div>
-    <div>
-      会員id
-    </div>
-    <div>
-      氏名
-    </div>
-    <div>
-      フリガナ
-    </div>
-    <div>
-      郵便番号
-    </div>
-    <div>
-      住所
-    </div>
-    <div>
-      電話番号
-    </div>
-    <div>
-      メールアドレス
-    </div>
-    <div>
-      会員ステータス
+<div class="container">
+  <div class="row">
+    <div class="bg-light m-4 col-md-3">
+      <strong>
+        <%= @customer.first_name %><%= @customer.last_name %>
+      </strong>
+      さんの
+      <strong>
+        会員詳細
+      </strong>
     </div>
   </div>
+
   <%= form_with model: @customer, url: admin_customer_path do |f| %>
-  <div>
+  <div class="row p-2">
+    <div class="col-md-3">会員ID</div>
     <%= @customer.id %>
   </div>
-  <div>
-    <%= f.text_field :first_name %> <%= f.text_field :last_name %>
+  <div class="row p-2">
+    <div class="col-md-3">氏名</div>
+    <%= f.text_field :first_name %> <%= f.text_field :last_name, class: "ml-4" %>
   </div>
-  <div>
-    <%= f.text_field :first_name_kana %> <%= f.text_field :last_name_kana %>
+  <div class="row p-2">
+    <div class="col-md-3">フリガナ</div>
+    <%= f.text_field :first_name_kana %> <%= f.text_field :last_name_kana, class: "ml-4" %>
   </div>
-  <div>
+  <div class="row p-2">
+    <div class="col-md-3">郵便番号</div>
     <%= f.text_field :postal_code %>
   </div>
-  <div>
-    <%= f.text_field :address %>
+  <div class="row p-2">
+    <div class="col-md-3">住所</div>
+    <%= f.text_field :address, class: "w-50"%>
   </div>
-  <div>
+  <div class="row p-2">
+    <div class="col-md-3">電話番号</div>
     <%= f.text_field :telephone_number %>
   </div>
-  <div>
+  <div class="row p-2">
+    <div class="col-md-3">メールアドレス</div>
     <%= f.text_field :email %>
   </div>
-  <div>
-   <%= f.label:有効 %>
-   <%= f.radio_button :is_deleted, :false %>
-   <%= f.label:退会 %>
-   <%= f.radio_button :is_deleted, :true %>
+  <div class="row p-2">
+    <div class="col-md-3">会員ステータス</div>
+    <div>
+       <%= f.radio_button :is_deleted, :false %>
+       <%= f.label:有効 %>
+     </div>
+     <div class="ml-3">
+       <%= f.radio_button :is_deleted, :true %>
+       <%= f.label:退会 %>
+     </div>
   </div>
-  <div class="actions">
-    <%= f.submit "変更を保存" %>
+  <div class="row p-2">
+    <%= f.submit "変更を保存", class: "btn btn-success offset-md-3" %>
   </div>
   <% end %>
 </div>
