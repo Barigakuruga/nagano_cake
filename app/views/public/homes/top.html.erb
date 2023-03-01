@@ -1,6 +1,7 @@
 <div class="container">
-  <div class="container">
-      <%= image_tag 'no_image.jpg', :size => '500x250' %>
+
+
+      <div class="background w-75 d-flex justify-content-center align-items-center" style="height: 500px;">
         <p>
           ようこそ、ながのCAKEへ！<br>
           このサイトは、 ケーキ販売のECサイトになります。<br>
@@ -10,19 +11,18 @@
       </div>
       <h4>新着商品</h4>
       <div class="row">
-        <% @items.each do |item| %>
-        <%= link_to public_item_path(item.id) do %>
-        <div>
-          <div>
-            <%= image_tag item.get_image(200,100) %><br>
+        <% @items.first(4).each do |item| %>
+        <div class="m-2">
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image(400,200) %><br>
             <%= item.name %><br>
             <%= item.price %>
-          </div>
+          <% end %>
         </div>
         <% end %>
-        <% end %>
       </div>
+      <%= link_to "全ての商品を見る", items_path %>
     </div>
-  </div>
-  <%= link_to "全ての商品を見る", public_items_path %>
+
+
 </div>

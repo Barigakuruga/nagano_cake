@@ -21,7 +21,7 @@
     </tr>
     <tr>
       <td>注文ステータス</td>
-      <%= form_with model: @status, url: admin_order_path(@status.id) do |f| %>
+      <%= form_with model: @order, url: admin_order_path(@order.id) do |f| %>
       <td><%= f.select :status, Order.statuses.keys.map { |k| [I18n.t("enums.order.status.#{k}"), k] } %> <%= f.submit "更新", class: "btn btn-success btn-sm" %></td>
       <% end %>
     </tr>

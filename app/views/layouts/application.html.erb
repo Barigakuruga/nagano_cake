@@ -7,9 +7,56 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <header>
+<div class="container">
+  <div class="row list-inline">
+    <h4 class="col-md-2">LOGO</h4>
+    <% if customer_signed_in? %>
+      <li class="col-md-1">
+        <%= link_to "マイページ", my_page_path %>
+      </li>
+      <li class="col-md-1">
+        <%= link_to "商品一覧", items_path %>
+      </li>
+      <li class="col-md-1">
+        <%= link_to "カート", cart_items_path %>
+      </li>
+      <li class="col-md-1">
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+      </li>
+    <% elsif admin_signed_in? %>
+      <li class="col-md-2">
+        <%= link_to "商品一覧", admin_items_path %>
+      </li>
+      <li class="col-md-2">
+        <%= link_to "会員一覧", admin_customers_path %>
+      </li>
+      <li class="col-md-2">
+        <%= link_to "注文履歴一覧", admin_root_path %>
+      </li>
+      <li class="col-md-2">
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <li class="offset-md-5">
+        <%= link_to "About", about_path, class: "p-4" %>
+      </li>
+      <li class="">
+        <%= link_to "商品一覧", items_path, class: "p-4" %>
+      </li>
+      <li class="">
+        <%= link_to "新規登録", new_customer_registration_path, class: "p-4" %>
+      </li>
+      <li class="">
+        <%= link_to "ログイン", new_customer_session_path, class: "p-4" %>
+      </li>
+    <% end %>
+  </div>
+</div>
+  </header>
   <body>
     <%= yield %>
   </body>

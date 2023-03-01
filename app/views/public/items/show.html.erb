@@ -1,2 +1,31 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="row mt-4">
+  <h4 class="bg-light col-md-2 offset-md-2">商品詳細</h4>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 m-5">
+      <%= image_tag @item.get_image(400,200) %>
+    </div>
+    <div class="col-md-7 mt-5">
+      <div class="row p-2">
+        <%= @item.name %>
+      </div>
+      <div class="row p-2">
+       <%= @item.introduction %>
+      </div>
+      <div class="row p-2">
+        <div class="col-md-3">税込価格</div>
+        ¥<%= @item.with_tax_price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %>（税込）
+      </div>
+      <div class="row p-2">
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+        <%= f.hidden_field :item_id , :value => @item.id %>
+        <%= f.select :amount, *[1..10], { include_blank: '個数選択'} %>
+      </div>
+      <div class="row">
+        <%= f.submit "カートに入れる", class: "btn btn-success mt-4 col-md-3 offset-md-2" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
