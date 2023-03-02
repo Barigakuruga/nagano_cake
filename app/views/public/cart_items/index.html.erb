@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <h4>ショッピングカート</h4>
+    <%= link_to "カートを空にする", destroy_all_path, method: :delete %>
   </div>
   <% @cart_items.each do |cart_item| %>
   <table class="table">
@@ -27,7 +28,7 @@
   </table>
   <% end %>
   <% @product_total = 0 %>
-  <% @cart_item.each do |total| %>
+  <% @cart_items.each do |total| %>
   <% @product_total += total.subtotal %>
   <% end %>
   <div class="row">

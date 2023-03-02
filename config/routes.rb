@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     get 'information' => 'customers#edit'
     get 'unsubscribe' => 'customers#unsubscribe'
     patch 'withdraw' => 'customers#withdraw', as: 'withdraw'
+    delete 'destroy_all' => 'cart_items#destroy_all'
+    post 'orders/confirm'
     resources :homes, only: [:top, :about]
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :unsubscribe, :update, :withdraw]
