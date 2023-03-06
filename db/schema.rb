@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2023_02_11_114038) do
     t.string "name"
     t.integer "customer_id"
     t.integer "total_payment"
-    t.integer "shipping_cost"
+    t.integer "shipping_cost", default: 800
     t.integer "payment_method", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
