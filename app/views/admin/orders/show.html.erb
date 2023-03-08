@@ -39,7 +39,7 @@
       </thead>
       <tbody>
         <% @order_details.each do |order_detail| %>
-        <% @product_total = 0 %>
+       
         <tr>
           <td><%= order_detail.item.name %></td>
           <td><%= order_detail.item.price %></td>
@@ -54,6 +54,7 @@
     </table>
     <table class="table table-sm col-md-2 table-borderless ">
       <tr>
+        <% @product_total = 0 %>
         <% @order_details.each do |total| %>
         <% @product_total += total.subtotal %>
         <% end %>

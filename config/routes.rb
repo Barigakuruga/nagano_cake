@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     get 'information' => 'customers#edit'
     get 'unsubscribe' => 'customers#unsubscribe'
-    get 'thanx' => 'order#thanx'
+    get 'orders/thanx'
     patch 'withdraw' => 'customers#withdraw', as: 'withdraw'
     delete 'destroy_all' => 'cart_items#destroy_all'
     post 'orders/confirm'

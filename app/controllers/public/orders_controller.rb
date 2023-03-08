@@ -8,20 +8,17 @@ class Public::OrdersController < ApplicationController
   def create
     cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
-    if @order.save
+    @order.save
       cart_items.each do |cart|
         order_detail = OrderDetail.new
         order_detail.item_id = cart.item_id
+        order_detail.order_id = @order.id
         order_detail.amount = cart.amount
-        order_detail.price = cart.item.price
+        order_detail.price = cart.item.with_tax_price
         order_detail.save
       end
-      redirect_to thanx_path
-      cart_items.destroy_all
-    else
-      @order = Order.new(order_params)
-      render :new
-    end
+    redirect_to orders_thanx_path
+    cart_items.destroy_all
   end
 
   def confirm
@@ -56,7 +53,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:customer_id, :payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:customer_id, :payment_method, :postal_code, :address, :name, :total_payment)
   end
 
   def address_params
