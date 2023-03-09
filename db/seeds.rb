@@ -10,4 +10,7 @@ Admin.create!(
   password: 'yupose1130'
   )
   
-  
+Genre.create!(
+  name: 'ケーキ'
+  )
+

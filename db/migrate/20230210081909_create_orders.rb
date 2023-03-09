@@ -8,8 +8,8 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.integer :total_payment
       t.integer :shipping_cost, default: 800
       t.integer :payment_method, default: 0
-      t.integer :status, default: 
-      
+      t.integer :status, default: 0
+
 
       t.timestamps
     end

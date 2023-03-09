@@ -33,11 +33,6 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
-    elsif params[:order][:select_address] == "2"
-      @address = Address.new(address_params)
-      @address.save
-    else
-      redirect_to orders_path(@order)
     end
   end
 
@@ -45,9 +40,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   private
