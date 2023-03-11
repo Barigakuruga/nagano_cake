@@ -1,13 +1,16 @@
 <div class="container">
-  <h4>マイページ</h4>
   <div class="row my-3">
+    <h4 class="offset-md-2"><span class="bg-light">マイページ</span></h4>
+  </div>
+
+  <div class="d-flex my-3">
     <h4>登録情報</h4>
-     <%= link_to information_path, class: " col-md-3 offset-md-2" do %>
-        <div class="btn btn-success btn-lg " >編集する</div>
+     <%= link_to information_path, class: " col-md-3 offset-md-1" do %>
+        <div class="btn btn-success " >編集する</div>
      <% end %>
   </div>
-  <div class="row">
-    <ul class="list-group col-md-3">
+  <div class="d-flex">
+    <ul class="list-group w-25">
       <li class="list-group-item bg-light">氏名</li>
       <li class="list-group-item bg-light">カナ</li>
       <li class="list-group-item bg-light">郵便番号</li>
@@ -15,7 +18,7 @@
       <li class="list-group-item bg-light">電話番号</li>
       <li class="list-group-item bg-light">メールアドレス</li>
     </ul>
-    <ul class="list-group col-md-6">
+    <ul class="list-group w-50">
       <li class="list-group-item "><%= @customer.first_name %> <%= @customer.last_name %></li>
       <li class="list-group-item"><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></li>
       <li class="list-group-item"><%= @customer.postal_code %></li>
@@ -24,10 +27,10 @@
       <li class="list-group-item"><%= @customer.email %></li>
     </ul>
   </div>
-  <div class="row">
+  <div class="d-flex my-3">
     <h4>注文履歴</h4>
-    <%= link_to orders_path, class: "mt-4 col-md-3 offset-md-2" do %>
-      <div class="btn btn-success btn-lg " >一覧を見る</div>
+    <%= link_to orders_path, class: "col-md-3 offset-md-1" do %>
+      <div class="btn btn-primary" >一覧を見る</div>
     <% end %>
   </div>
 </div>

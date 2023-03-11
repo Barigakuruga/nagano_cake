@@ -1,39 +1,62 @@
 <div class="container">
-  <div class="row">
-    <h4>ショッピングカート</h4>
-    <%= link_to "カートを空にする", destroy_all_path, method: :delete %>
-  </div>
-  <% @cart_items.each do |cart_item| %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>商品名</th>
-        <th>単価（税込）</th>
-        <th>数量</th>
-        <th>小計</th>
-        <th>#</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th><%= image_tag cart_item.item.get_image(100,100), size: "100x100" %> <%= cart_item.item.name %></th>
-        <td><%= cart_item.item.with_tax_price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %></td>
-        <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
-          <td><%= f.select :amount, *[1..10] %> <%= f.submit "変更", class: "btn btn-success btn-sm" %></td>
+  <div class="row my-3">
+      <h4 class="offset-md-1"><span class="bg-light">ショッピングカート</span></h4>
+      <div class="offset-md-6">
+        <%= link_to destroy_all_path, method: :delete do %>
+          <div class="btn btn-danger">カートを空にする</div>
         <% end %>
-        <td><%= cart_item.subtotal.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %></td>
-        <td><%= link_to "削除", cart_item_path(cart_item.id), method: :delete %></td>
-      </tr>
-    </tbody>
-  </table>
-  <% end %>
-  <% @product_total = 0 %>
-  <% @cart_items.each do |total| %>
-  <% @product_total += total.subtotal %>
-  <% end %>
-  <div class="row">
-    <%= link_to "買い物を続ける", root_path %>
-    <%= @product_total.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %>円
+      </div>
+    </div>
+    <div class="d-flex ">
+    <% @cart_items.each do |cart_item| %>
+    <table class="table mx-auto table-bordered">
+      <thead class="bg-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th><%= image_tag cart_item.item.get_image(100,100), size: "100x50" %> <%= cart_item.item.name %></th>
+          <td><%= cart_item.item.with_tax_price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %></td>
+          <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
+            <td><%= f.select :amount, *[1..10] %> <%= f.submit "変更", class: "btn btn-success btn-sm" %></td>
+          <% end %>
+          <td><%= cart_item.subtotal.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %></td>
+          <td>
+            <%= link_to cart_item_path(cart_item.id), method: :delete do %>
+              <div class="btn btn-danger">削除</div>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <%= link_to "情報入力に進む", new_order_path %>
+    <% end %>
+    <% @product_total = 0 %>
+    <% @cart_items.each do |total| %>
+    <% @product_total += total.subtotal %>
+    <% end %>
+    <div class="row">
+      <div class="col-md-2">
+      <%= link_to root_path, class: "offset-md-1" do %>
+        <div class="btn btn-primary">買い物を続ける</div>
+      <% end %>
+      </div>
+      <table class="table table-bordered offset-md-7" style="width: 25%;">
+        <tr>
+          <th class="bg-light">合計金額</th>
+          <th><%= @product_total.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %>円</th>
+        </tr>
+      </table>
+    </div>
+    <div class="d-flex justify-content-center my-3">
+      <%= link_to new_order_path do %>
+        <div class="btn btn-success">情報入力に進む</div>
+      <% end %>
+    </div>
 </div>

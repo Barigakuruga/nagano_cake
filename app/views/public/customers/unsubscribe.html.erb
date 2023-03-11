@@ -1,16 +1,18 @@
 <div class="container">
-  <h4>本当に退会しますか？</h4>
-  <p>
-    退会すると、会員登録情報や<br >
-    これまでの購入が閲覧できなくなります。<br >
-    退会する場合は、『退会する』をクリックしてくださいをクリックしてください。
-  </p>
-  <div class="row">
-    <%= link_to my_page_path, class: "mt-4 col-md-3 offset-md-2" do %>
-      <div class="btn btn-success btn-lg " >退会しない</div>
-    <% end %>
-    <%= link_to withdraw_path(@customer.id), method: :patch, data: { confilm: "本当に退会しますか？" }, class: "mt-4 col-md-3 offset-md-2" do %>
-      <div class="btn btn-success btn-lg " >退会する</div>
-    <% end %>
+  <div class="text-center">
+    <h4 class="my-5">本当に退会しますか？</h4>
+    <p>
+      退会すると、会員登録情報や<br >
+      これまでの購入が閲覧できなくなります。<br >
+      退会する場合は、『退会する』をクリックしてくださいをクリックしてください。
+    </p>
+    <div class="d-flex justify-content-center">
+      <%= link_to my_page_path, class: "m-4" do %>
+        <div class="btn btn-success" >退会しない</div>
+      <% end %>
+      <%= link_to withdraw_path(@customer.id), method: :patch, data: { confilm: "本当に退会しますか？" }, class: "m-4" do %>
+        <div class="btn btn-danger" >退会する</div>
+      <% end %>
+    </div>
   </div>
 </div>
