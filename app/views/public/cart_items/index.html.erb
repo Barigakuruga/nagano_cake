@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="d-flex ">
-    <% @cart_items.each do |cart_item| %>
+
     <table class="table mx-auto table-bordered">
       <thead class="bg-light">
         <tr>
@@ -20,6 +20,7 @@
         </tr>
       </thead>
       <tbody>
+        <% @cart_items.each do |cart_item| %>
         <tr>
           <th><%= image_tag cart_item.item.get_image(100,100), size: "100x50" %> <%= cart_item.item.name %></th>
           <td><%= cart_item.item.with_tax_price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %></td>
@@ -33,10 +34,11 @@
             <% end %>
           </td>
         </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
-    <% end %>
+
     <% @product_total = 0 %>
     <% @cart_items.each do |total| %>
     <% @product_total += total.subtotal %>

@@ -1,6 +1,9 @@
 <div class="container">
-  <h4>注文履歴一覧</h4>
-  <table class="table col-md-10 text-center m-auto">
+  <div class="row my-3">
+    <h4 class="offset-md-2"><span class="bg-light">注文履歴一覧</span></h4>
+  </div>
+ 
+  <table class="table col-md-10 m-auto table-bordered">
       <thead class="table-secondary">
         <tr>
           <th>注文日</th>
@@ -29,7 +32,7 @@
           <td><%= order.status_i18n %></td>
           <td>
             <%= link_to order_path(order.id), class: "mt-4 col-md-3 offset-md-2" do %>
-              <div class="btn btn-success btn-lg " >表示する</div>
+              <div class="btn btn-primary" >表示する</div>
             <% end %>
           </td>
         </tr>
