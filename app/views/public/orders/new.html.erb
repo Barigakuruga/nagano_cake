@@ -24,11 +24,11 @@
         <%= @customer.first_name %><%= @customer.last_name %>
       </div>
     </div>
-
-    <div>
-      <%= f.radio_button :select_address, 1 %>
-      <%= f.label :select_address_1, "登録済み住所から選択" %><br >
-      <div class="ml-4"><%= f.select :address_id, options_from_collection_for_select(@address, :id, :address_display) %></div>
+    <!--配送先追加無しなので非表示-->
+    <!--<div>-->
+      <%#= f.radio_button :select_address, 1 %>
+      <%#= f.label :select_address_1, "登録済み住所から選択" %><br >
+      <div class="ml-4"><%#= f.select :address_id, options_from_collection_for_select(@address, :id, :address_display) %></div>
     </div>
     <div>
       <%= f.radio_button :select_address, 2 %>

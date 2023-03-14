@@ -1,8 +1,16 @@
-
+<div class="container">
+  <% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <div class="row m-4">
   <h4 class="col-md-2 bg-light offset-md-2 ">商品新規登録</h4>
 </div>
-<div class="container">
+
 
   <%= form_with model: @item, url: admin_items_path do |f| %>
 
@@ -22,7 +30,7 @@
   </div>
   <div class="field row pb-2">
     <%= f.label:ジャンル, class: "col-2 offset-md-3" %>
-    <%= f.collection_select(:genre_id, @genre, :id, :name, prompt: "--選択してください--") %>
+    <%= f.collection_select(:genre_id, @genre, :id, :name) %>
   </div>
 
   <div class="field row pb-2">

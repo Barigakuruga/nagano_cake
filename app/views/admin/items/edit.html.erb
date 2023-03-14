@@ -1,8 +1,16 @@
-<div class="row m-4">
-  <h4 class="col-md-2 bg-light offset-md-2">商品編集</h4>
-</div>
-<div class="container">
 
+<div class="container">
+  <% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  <div class="row m-4">
+    <h4 class="col-md-2 bg-light offset-md-2">商品編集</h4>
+  </div>
       <%= form_with model: @item, url: admin_item_path(@item.id) do |f| %>
       <div class="field row pb-2">
         <%= f.label:商品画像, class: "col-2 offset-md-3" %>

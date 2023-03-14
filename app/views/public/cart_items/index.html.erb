@@ -56,9 +56,11 @@
         </tr>
       </table>
     </div>
-    <div class="d-flex justify-content-center my-3">
-      <%= link_to new_order_path do %>
-        <div class="btn btn-success">情報入力に進む</div>
-      <% end %>
-    </div>
+    <% unless @cart_items.count == 0 %>
+      <div class="d-flex justify-content-center my-3">
+        <%= link_to new_order_path do %>
+          <div class="btn btn-success">情報入力に進む</div>
+        <% end %>
+      </div>
+    <% end %>
 </div>

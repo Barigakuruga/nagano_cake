@@ -8,37 +8,37 @@
   <%= render "public/shared/error_messages", resource: resource %>
 
       <div class="row p-2">
-        <%= f.label :名前, class: "col-md-3" %>
-     (姓)<%= f.text_field :first_name, :class => "col-md-2 mr-5" %>（名） <%= f.text_field :last_name, :class => "col-md-2" %>
+        <%= f.label :名前, class: "col-md-2" %>
+        <div class="col-md-1">(姓)</div><%= f.text_field :first_name, :class => "w-25" %><div class="col-md-1">（名）</div><%= f.text_field :last_name, :class => "w-25" %>
       </div>
       <div class="row p-2">
-        <%= f.label :フリガナ, class: "col-md-3" %>
-  （セイ）<%= f.text_field :first_name_kana, :class => "col-md-2 mr-4" %>（メイ）<%= f.text_field :last_name_kana, :class => "col-md-2" %>
+        <%= f.label :フリガナ, class: "col-md-2" %>
+    <div class="col-md-1">(セイ)</div><%= f.text_field :first_name_kana, :class => "w-25" %><div class="col-md-1">(メイ)</div><%= f.text_field :last_name_kana, :class => "w-25" %>
       </div>
       <div class="row p-2">
         <%= f.label :メールアドレス, class: "col-md-3" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "w-25" %>
       </div>
       <div class="row p-2">
         <%= f.label :郵便番号（ハイフンなし）, class: "col-md-3" %>
-        <%= f.text_field :postal_code %>
+        <%= f.text_field :postal_code, :class => "w-25" %>
       </div>
       <div class="row p-2">
         <%= f.label :住所, class: "col-md-3" %>
-        <%= f.text_field :address %>
+        <%= f.text_field :address, :class => "w-50" %>
       </div>
       <div class="row p-2">
         <%= f.label :電話番号, class: "col-md-3" %>
-        <%= f.text_field :telephone_number %>
+        <%= f.text_field :telephone_number, :class => "w-25" %>
       </div>
       <div class="row p-2">
         <%= f.label :パスワード（６文字以上）, class: "col-md-3"%>
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.password_field :password, autocomplete: "new-password", :class => "w-25" %>
       </div>
 
       <div class="row p-2">
         <%= f.label :パスワード（確認用）, class: "col-md-3" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "w-25" %>
       </div>
 
       <div class="row p-2">
@@ -49,6 +49,6 @@
   <div class="row p-2">
     <h4 class="bg-light">既に登録済みの方</h4>
   </div>
-<%= link_to "こちら", new_customer_session_path %>
+<div class="my-3"><%= link_to "こちら", new_customer_session_path %></div>
 </div>
 </div>

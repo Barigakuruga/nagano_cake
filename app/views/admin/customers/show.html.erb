@@ -1,18 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="m-4 col-md-3">
-      <span class="bg-light ">
-        <strong>
-          <%= @customer.first_name %><%= @customer.last_name %>
-        </strong>
+    <div class="m-4 col-md-4">
+      <h4 class="bg-light ">
+        <strong><%= @customer.first_name %><%= @customer.last_name %></strong>
         さんの
-        <strong>
-          会員詳細
-        </strong>
-      </span>
+        <strong>会員詳細</strong>
+      </h4>
     </div>
   </div>
-  <div class="col-md-8">
     <div class="row p-2">
       <div class="col-md-3">会員id</div><%= @customer.id %>
     </div>
@@ -34,7 +29,7 @@
     <div class="row p-2">
       <div class="col-md-3">会員ステータス</div>
       <% if @customer.is_deleted %>
-      <div class="text-secondary">無効</div>
+      <div class="text-secondary">退会</div>
       <% else %>
       <div class="text-success">有効</div>
       <% end %>

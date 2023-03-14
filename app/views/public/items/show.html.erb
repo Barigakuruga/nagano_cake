@@ -12,14 +12,14 @@
       </div>
       <div class="row p-3">
         ¥<%= @item.with_tax_price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %>（税込）
-    </div>
+      </div>
 
       <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
         <%= f.hidden_field :item_id , :value => @item.id %>
 
-      <div class="d-flex">
-        <%= f.select :amount, *[1..10], { include_blank: '個数選択'} %>
-        <%= f.submit "カートに入れる", class: "btn btn-success mt-4 col-md-3 offset-md-2" %>
+      <div class="row">
+        <%= f.select :amount, *[1..10] %>
+        <%= f.submit "カートに入れる", class: "btn btn-success mt-4 col-md-4 offset-md-1" %>
         <% end %>
       </div>
     </div>

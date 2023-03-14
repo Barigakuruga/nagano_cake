@@ -1,4 +1,12 @@
 <div class="container">
+  <% if @customer.errors.any? %>
+  <%= @customer.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
   <div class="row">
     <div class="bg-light m-4 col-md-3">
       <strong>

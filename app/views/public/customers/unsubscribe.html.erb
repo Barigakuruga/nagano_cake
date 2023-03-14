@@ -10,7 +10,7 @@
       <%= link_to my_page_path, class: "m-4" do %>
         <div class="btn btn-success" >退会しない</div>
       <% end %>
-      <%= link_to withdraw_path(@customer.id), method: :patch, data: { confilm: "本当に退会しますか？" }, class: "m-4" do %>
+      <%= link_to withdraw_path(@customer.id), method: :patch, "data-confirm" => "本当に退会しますか？" , class: "m-4" do %>
         <div class="btn btn-danger" >退会する</div>
       <% end %>
     </div>
