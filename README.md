@@ -1,24 +1,21 @@
-# README
+# DMM_WEBCANP応用課題長野ケーキECサイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 使い方
+*インストール
+  * git clone git@github.com:Barigakuruga/nagano_cake.git
+  * cd nagano_cake
+  * rails db:migrate
+  * rails db:seed
+  * bundle install
 
-Things you may want to cover:
+## seedの情報
+*管理者側のログイン情報
+  *メールアドレス[yupose1130@gmail]
+  *パスワード[yupose]
+*ジャンル
+  *ケーキ
+  *プリン
+  *焼き菓子
+  *キャンディ
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##  作成者 [相澤悠平]

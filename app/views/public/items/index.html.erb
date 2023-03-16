@@ -2,13 +2,15 @@
   <div class="row my-4">
     <h4>新着商品</h4><p>(全<%= @items.count %>件)</p>
   </div>
-  <div class="d-flex flex-wrap">
+  <div class="row">
     <% @items.each do |item| %>
-      <%= link_to item_path(item.id), class: "my-2 col-md-3" do %>
-      <%= image_tag item.get_image(300,150), size: "190x150" %><br>
-      <%= item.name %><br>
-      ¥<%= item.price %>
-      <% end %>
+      <div class=" ml-3" style="width: 15rem; height:285px">
+        <%= link_to item_path(item.id), class: "my-2" do %>
+        <%= image_tag item.get_image(300,150), size: "190x150" %><br>
+        <%= item.name %><br>
+        ¥<%= item.price %>
+        <% end %>
+      </div>
     <% end %>
   </div>
   <div class="d-flex justify-content-center my-3">
